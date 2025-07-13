@@ -40,11 +40,21 @@ function App() {
     };
 
     const handleSelectStart = (e: Event) => {
+      // Permitir seleção em inputs e textareas
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.contentEditable === 'true') {
+        return true;
+      }
       e.preventDefault();
       return false;
     };
 
     const handleDragStart = (e: DragEvent) => {
+      // Permitir drag em elementos interativos
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button') || target.closest('a')) {
+        return true;
+      }
       e.preventDefault();
       return false;
     };
