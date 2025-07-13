@@ -1,79 +1,116 @@
-# Quiz Bolt 🎯
+# Quiz - Motivo da Falha
 
-Um quiz interativo e moderno desenvolvido com React, TypeScript e Tailwind CSS.
+Um quiz interativo desenvolvido em React + TypeScript para diagnosticar o metabolismo e identificar possíveis falhas no processo de emagrecimento.
 
-## 🚀 Deploy no GitHub Pages
+## 🚀 Tecnologias Utilizadas
 
-### Pré-requisitos
-- Node.js instalado
-- Conta no GitHub
-- Repositório criado no GitHub
+- **React 18** - Biblioteca JavaScript para interfaces
+- **TypeScript** - Superset JavaScript com tipagem estática
+- **Vite** - Build tool e dev server
+- **Tailwind CSS** - Framework CSS utilitário
+- **Lucide React** - Ícones modernos
+- **GitHub Pages** - Deploy automático
 
-### Passos para Deploy
+## 📋 Funcionalidades
 
-1. **Instalar dependências:**
+- ✅ Quiz interativo com 20 perguntas
+- ✅ Sistema de pontuação inteligente
+- ✅ Diagnóstico personalizado
+- ✅ Modo escuro/claro
+- ✅ Animações e confetti
+- ✅ Sistema de badges
+- ✅ Compartilhamento social
+- ✅ Analytics em tempo real
+- ✅ Popup de saída (exit intent)
+- ✅ Contador de usuários ativos
+- ✅ Formulário de captura de leads
+
+## 🎯 Como Funciona
+
+O quiz utiliza um sistema de pontuação baseado em 15.000+ diagnósticos:
+
+- **Mais de 250 pontos**: Você não precisa do protocolo! 🎉
+- **150-249 pontos**: Metabolismo em alerta 🚨
+- **Menos de 150**: Precisa de intervenção urgente ⚠️
+
+## 🛠️ Como Executar Localmente
+
+1. **Clone o repositório**
+   ```bash
+   git clone https://github.com/luan4rauj0/quizmotivodafalha.git
+   cd quizmotivodafalha
+   ```
+
+2. **Instale as dependências**
    ```bash
    npm install
    ```
 
-2. **Instalar gh-pages:**
+3. **Execute em modo de desenvolvimento**
    ```bash
-   npm install --save-dev gh-pages
+   npm run dev
    ```
 
-3. **Fazer build do projeto:**
-   ```bash
-   npm run build
+4. **Abra no navegador**
+   ```
+   http://localhost:5173
    ```
 
-4. **Deploy automático:**
-   ```bash
-   npm run deploy
-   ```
+## 🚀 Deploy
 
-### Configuração no GitHub
+O projeto está configurado para deploy automático no GitHub Pages. A cada push para a branch `main`, o site é automaticamente atualizado.
 
-1. Vá para **Settings** do seu repositório
-2. Role até **Pages** no menu lateral
-3. Em **Source**, selecione **Deploy from a branch**
-4. Selecione a branch **gh-pages** e pasta **/(root)**
-5. Clique **Save**
-
-### URL do Deploy
-Após o deploy, seu quiz estará disponível em:
-`https://[seu-usuario].github.io/quizmetabolico/`
-
-## 🛠️ Desenvolvimento
-
+### Deploy Manual
 ```bash
-# Instalar dependências
-npm install
-
-# Rodar em desenvolvimento
-npm run dev
-
-# Build para produção
-npm run build
-
-# Preview do build
-npm run preview
+npm run deploy
 ```
 
 ## 📁 Estrutura do Projeto
 
 ```
 src/
-├── components/     # Componentes React
-├── data/          # Configurações do quiz
-├── hooks/         # Custom hooks
-├── types/         # Tipos TypeScript
-└── main.tsx       # Entry point
+├── components/          # Componentes React
+├── hooks/              # Custom hooks
+├── data/               # Configurações do quiz
+├── types/              # Definições TypeScript
+└── App.tsx            # Componente principal
 ```
 
-## 🎨 Tecnologias
+## 🎨 Personalização
 
-- **React 18** - Framework principal
-- **TypeScript** - Tipagem estática
-- **Tailwind CSS** - Estilização
-- **Vite** - Build tool
-- **Lucide React** - Ícones 
+O quiz pode ser facilmente personalizado editando o arquivo `src/data/quizConfig.ts`:
+
+- Título e subtítulo
+- Perguntas e respostas
+- Pontuações
+- Configurações de cores
+
+## 📊 Analytics
+
+O projeto inclui um sistema de analytics que rastreia:
+- Início do quiz
+- Completude do quiz
+- Conversões
+- Tempo de resposta
+
+## 🤝 Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 👨‍💻 Autor
+
+**Luana Araújo**
+- Email: luanaraujo13131@gmail.com
+- GitHub: [@luan4rauj0](https://github.com/luan4rauj0)
+
+---
+
+⭐ Se este projeto te ajudou, considere dar uma estrela no repositório! 
