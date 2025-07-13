@@ -1,0 +1,266 @@
+{
+  "metadata": {
+    "titulo": "Quiz Metabólico - Protocolo de Chás Diastase Guru",
+    "descricao": "Quiz completo para desbloquear protocolo personalizado mounjaro natural",
+    "totalPerguntas": 28,
+    "versao": "1.0",
+    "criadoEm": "2025-01-27"
+  },
+  "configuracaoGeral": {
+    "titulo": "Descubra o Motivo do Seu Emagrecimento Ter Falhado Até Hoje",
+    "subtitulo": "Quiz completo para desbloquear seu protocolo personalizado mounjaro natural",
+    "totalQuestoes": 23,
+    "questoesOferta": 5
+  },
+  "perguntas": [
+    {
+      "id": "q0_age",
+      "pergunta": "Qual é a sua faixa etária? 🎂",
+      "tipo": "single",
+      "opcoes": [
+        { "id": "age_18_25", "texto": "18-25 anos 🌸", "valor": "young", "pontos": 4 },
+        { "id": "age_26_35", "texto": "26-35 anos 💪", "valor": "adult", "pontos": 5 },
+        { "id": "age_36_45", "texto": "36-45 anos 🌟", "valor": "mature", "pontos": 6 },
+        { "id": "age_46_plus", "texto": "46+ anos 👑", "valor": "experienced", "pontos": 6 }
+      ],
+      "microFeedback": "Sua idade influencia diretamente na velocidade do seu metabolismo. Quanto mais madura, mais estratégico precisa ser o protocolo! 💡"
+    },
+    {
+      "id": "q0_body_type",
+      "pergunta": "Como você descreveria seu tipo de corpo atual? 👗",
+      "tipo": "single",
+      "opcoes": [
+        { "id": "body_slim", "texto": "Magra, mas com algumas áreas que me incomodam 🤏", "valor": "slim_areas", "pontos": 3 },
+        { "id": "body_curvy", "texto": "Curvilínea, mas quero definir melhor 💃", "valor": "curvy", "pontos": 4 },
+        { "id": "body_overweight", "texto": "Acima do peso que gostaria de estar ⚖️", "valor": "overweight", "pontos": 5 },
+        { "id": "body_obese", "texto": "Muito acima do meu peso ideal 😔", "valor": "obese", "pontos": 6 }
+      ],
+      "microFeedback": "Cada tipo de corpo responde de forma diferente ao protocolo. Vamos personalizar tudo para você! ✨"
+    },
+    {
+      "id": "q0_dream_body",
+      "pergunta": "Qual é o seu corpo dos sonhos? ✨",
+      "tipo": "single",
+      "opcoes": [
+        { "id": "dream_toned", "texto": "Tonificada e definida, sem exageros 💪", "valor": "toned", "pontos": 4 },
+        { "id": "dream_slim", "texto": "Magra e elegante, como uma modelo 👗", "valor": "slim", "pontos": 5 },
+        { "id": "dream_curvy", "texto": "Curvas no lugar certo, cintura fina 🍑", "valor": "curvy_fit", "pontos": 5 },
+        { "id": "dream_healthy", "texto": "Saudável e confiante, sem obsessões 🌟", "valor": "healthy", "pontos": 6 }
+      ],
+      "microFeedback": "Seu objetivo é possível! O protocolo vai te levar exatamente onde você quer chegar. Vamos descobrir como! 🚀"
+    },
+    {
+      "id": "q1",
+      "pergunta": "Quando você se olha no espelho 🪞 e vê as áreas que NÃO mudam há anos… o que sente primeiro? 😣",
+      "tipo": "single",
+      "opcoes": [
+        { "id": "q1a", "texto": "Eu me sinto frustrada porque meu corpo está me sabotando 😩", "valor": "frustration", "pontos": 5 },
+        { "id": "q1b", "texto": "Eu sinto raiva porque fiz de tudo e ainda estou presa aqui 😡", "valor": "anger", "pontos": 4 },
+        { "id": "q1c", "texto": "Eu me sinto exausta de tentar mais uma vez e falhar 😞", "valor": "exhaustion", "pontos": 3 },
+        { "id": "q1d", "texto": "Eu sinto uma mistura cruel de tudo isso ao mesmo tempo 😣😡😞", "valor": "mixed", "pontos": 6 }
+      ],
+      "microFeedback": "Essa frustração que você sente não é psicológica... é seu corpo gritando que algo está biologicamente errado. E vai piorar se você não descobrir o que é. 😰"
+    },
+    {
+      "id": "q18",
+      "pergunta": "Você sabia que grandes remédios como a famosa canetinha \"imitar o Mounjaro\" (que é melhor que o Ozempic) podem ser substituídos por 3 chás naturais por dia? Se soubesse, qual seria a prioridade de aplicar isso na sua vida? 🚨",
+      "tipo": "single",
+      "opcoes": [
+        { "id": "q18a", "texto": "Máxima — eu não suporto mais me sentir assim 😣", "valor": "maximum", "pontos": 6 },
+        { "id": "q18b", "texto": "Alta — eu preciso entender e aplicar agora 🏃‍♂️", "valor": "high", "pontos": 5 },
+        { "id": "q18c", "texto": "Média — eu quero ver se isso funciona pra mim 🤔", "valor": "medium", "pontos": 3 },
+        { "id": "q18d", "texto": "Baixa — eu ainda me falta clareza 😶", "valor": "low", "pontos": 2 }
+      ],
+      "microFeedback": "Se a prioridade não é máxima, talvez você ainda não entendeu a gravidade da situação. Seu corpo está pedindo socorro. 😰"
+    },
+    {
+      "id": "q15_weight",
+      "pergunta": "Qual é seu peso atual e qual seria seu peso ideal? 📏",
+      "tipo": "single",
+      "opcoes": [
+        { "id": "weight_60_55", "texto": "Peso atual: 60-70kg | Peso ideal: 55-60kg 🎯", "valor": "light_loss", "pontos": 4 },
+        { "id": "weight_70_60", "texto": "Peso atual: 70-80kg | Peso ideal: 60-65kg 🎯", "valor": "moderate_loss", "pontos": 5 },
+        { "id": "weight_80_65", "texto": "Peso atual: 80-90kg | Peso ideal: 65-70kg 🎯", "valor": "significant_loss", "pontos": 6 },
+        { "id": "weight_90_70", "texto": "Peso atual: 90kg+ | Peso ideal: 70kg ou menos 🎯", "valor": "major_loss", "pontos": 6 }
+      ],
+      "microFeedback": "Sua meta de peso é totalmente alcançável! O protocolo vai te levar exatamente onde você quer chegar, de forma natural e sustentável. 🚀"
+    }
+  ],
+  "resultados": [
+    {
+      "id": "critico",
+      "titulo": "Diagnóstico: Síndrome Metabólica Severa",
+      "descricao": "Seu metabolismo está em colapso total. Múltiplos sistemas hormonais estão desregulados e seu corpo está em modo de sobrevivência.",
+      "pontosMinimos": 0,
+      "pontosMaximos": 100,
+      "recomendacao": "URGENTE: Você precisa do protocolo completo dos 3 chás + todos os bônus. Seu metabolismo precisa de uma reprogramação total. Recomendamos o plano completo ou vitalício para resultados máximos."
+    },
+    {
+      "id": "severo",
+      "titulo": "Diagnóstico: Disrupção Hormonal Avançada",
+      "descricao": "Seus hormônios estão em guerra contra seu corpo. A inflamação intestinal está bloqueando a produção natural de hormônios essenciais.",
+      "pontosMinimos": 121,
+      "pontosMaximos": 140,
+      "recomendacao": "Você precisa do protocolo dos 3 chás com foco na redução da inflamação. O plano completo é ideal para você ver resultados consistentes e duradouros."
+    },
+    {
+      "id": "moderado",
+      "titulo": "Diagnóstico: Inflamação Metabólica Crônica",
+      "descricao": "Seu corpo está em estado inflamatório constante, sabotando todos os seus esforços. Ainda há tempo para reverter.",
+      "pontosMinimos": 181,
+      "pontosMaximos": 199,
+      "recomendacao": "O protocolo dos 3 chás será suficiente para reativar seu GLP-1. O plano básico é perfeito para você começar e sentir as primeiras mudanças."
+    },
+    {
+      "id": "otimo",
+      "titulo": "Diagnóstico: Metabolismo Funcionando Bem",
+      "descricao": "Parabéns! Seu metabolismo está funcionando adequadamente. Você não precisa de intervenção urgente.",
+      "pontosMinimos": 200,
+      "pontosMaximos": 300,
+      "recomendacao": "Seu corpo está respondendo bem! Continue mantendo seus hábitos atuais. Se quiser otimizar ainda mais, o protocolo pode ser usado como manutenção."
+    }
+  ],
+  "planos": [
+    {
+      "id": "basico",
+      "nome": "Plano Básico",
+      "preco": "R$29,90/mês",
+      "descricao": "protocolo dos 3 chás",
+      "icone": "🧪"
+    },
+    {
+      "id": "completo",
+      "nome": "Plano Completo",
+      "preco": "R$39,90/mês",
+      "descricao": "protocolo + 4 bônus",
+      "icone": "💪"
+    },
+    {
+      "id": "vitalicio",
+      "nome": "Plano Vitalício",
+      "preco": "R$97 único",
+      "descricao": "tudo dos outros planos + acompanhamento por 1 mês",
+      "icone": "🌟"
+    }
+  ],
+  "bonus": [
+    {
+      "id": "korean_fasting",
+      "nome": "Jejum Metabólico Coreano",
+      "descricao": "emagrecer sem sofrimento",
+      "icone": "🇰🇷"
+    },
+    {
+      "id": "sugar_addiction",
+      "nome": "Vício em Doces Nunca Mais",
+      "descricao": "parar compulsão",
+      "icone": "🍬"
+    },
+    {
+      "id": "grandma_recipe",
+      "nome": "Receita da Vovó",
+      "descricao": "limpar intestino",
+      "icone": "👵"
+    },
+    {
+      "id": "subconscious",
+      "nome": "Acelerador Metabólico Subconsciente",
+      "descricao": "reprogramação mental",
+      "icone": "🧠"
+    }
+  ],
+  "calculadoraEconomia": {
+    "tratamentos": [
+      {
+        "id": "ozempic",
+        "nome": "Ozempic (Semaglutida)",
+        "mensal": 900,
+        "anual": 10800,
+        "observacao": "1 caneta por mês (injeção semanal). Alguns pacientes usam por tempo indeterminado."
+      },
+      {
+        "id": "mounjaro",
+        "nome": "Mounjaro (Tirzepatida)",
+        "mensal": 2200,
+        "anual": 26400,
+        "observacao": "Efeito similar ao Ozempic, mas mais caro e potente."
+      },
+      {
+        "id": "saxenda",
+        "nome": "Saxenda (Liraglutida)",
+        "mensal": 1400,
+        "anual": 16800,
+        "observacao": "Injeção diária. Menos eficaz que Mounjaro/Ozempic."
+      },
+      {
+        "id": "bariatrica",
+        "nome": "Cirurgia Bariátrica",
+        "mensal": 0,
+        "anual": 32500,
+        "pagamentoUnico": true,
+        "observacao": "Custo inclui hospital, equipe médica e exames. Exige acompanhamento contínuo."
+      },
+      {
+        "id": "lipo",
+        "nome": "Lipoaspiração / Lipo HD",
+        "mensal": 0,
+        "anual": 25000,
+        "pagamentoUnico": true,
+        "observacao": "Não trata obesidade — apenas modela gordura localizada."
+      },
+      {
+        "id": "criolipolise",
+        "nome": "Criolipólise",
+        "mensal": 1500,
+        "anual": 9000,
+        "observacao": "Recomendado em áreas específicas. Resultados graduais."
+      },
+      {
+        "id": "radiofrequencia",
+        "nome": "Ultrassom / Radiofrequência",
+        "mensal": 900,
+        "anual": 10800,
+        "observacao": "Complementar ao emagrecimento; combate flacidez."
+      },
+      {
+        "id": "termogenicos",
+        "nome": "Termogênicos / Inibidores",
+        "mensal": 300,
+        "anual": 3600,
+        "observacao": "Pode ser usado junto com acompanhamento médico."
+      },
+      {
+        "id": "medicos",
+        "nome": "Endocrinologista + Nutricionista",
+        "mensal": 850,
+        "anual": 10200,
+        "observacao": "Essencial para qualquer abordagem segura."
+      }
+    ],
+    "nossoProtocolo": {
+      "preco": 197,
+      "descricao": "Protocolo dos 3 Chás Metabólicos"
+    }
+  },
+  "instrucoes": {
+    "paraOutrasIAs": {
+      "como_usar": "Este arquivo contém toda a configuração do quiz. Para editar:",
+      "passos": [
+        "1. Edite as perguntas, respostas e pontuações neste JSON",
+        "2. Modifique os resultados e recomendações conforme necessário",
+        "3. Ajuste os preços dos planos e tratamentos",
+        "4. Peça para a IA regenerar o código usando este arquivo como base"
+      ],
+      "comando_sugerido": "Use este arquivo JSON para recriar o quiz com as modificações desejadas. Mantenha a estrutura React + TypeScript + Tailwind CSS."
+    },
+    "estrutura_arquivos": {
+      "principais": [
+        "src/App.tsx - Componente principal",
+        "src/data/quizConfig.ts - Configuração das perguntas",
+        "src/components/ - Todos os componentes do quiz",
+        "src/hooks/ - Lógica de estado do quiz"
+      ],
+      "para_edicao": "Foque principalmente em src/data/quizConfig.ts para mudanças de conteúdo"
+    }
+  }
+}
