@@ -2,8 +2,12 @@ export interface QuizQuestion {
   id: string;
   question: string;
   options: QuizOption[];
-  type: 'single' | 'multiple';
+  type: 'single' | 'multiple' | 'slider';
   microFeedback?: string;
+  min?: number; // para slider
+  max?: number; // para slider
+  step?: number; // para slider
+  unit?: string; // para slider
 }
 
 export interface QuizOption {
@@ -11,6 +15,7 @@ export interface QuizOption {
   text: string;
   value: string;
   points?: number;
+  microFeedback?: string;
 }
 
 export interface QuizResult {

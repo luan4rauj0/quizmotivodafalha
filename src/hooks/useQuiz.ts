@@ -146,5 +146,6 @@ export const useQuiz = () => {
     closeTestimonial,
     continueToDiagnosis,
     eventToAttend,
+    setUserAnswers, // exportar para uso externo
   };
 };

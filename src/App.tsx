@@ -91,6 +91,8 @@ function App() {
     restart,
     closeTestimonial,
     continueToDiagnosis,
+    eventToAttend,
+    setUserAnswers, // agora disponível
   } = useQuiz();
 
   const { showExitPopup, closeExitPopup } = useExitIntent(currentQuestionIndex);
@@ -118,6 +120,47 @@ function App() {
     trackConversion();
   };
 
+  // Faixas de pontuação dos diagnósticos
+  const DIAGNOSIS_RANGES = {
+    critico: { min: 0, max: 99 },
+    severo: { min: 100, max: 149 },
+    moderado: { min: 150, max: 249 },
+    otimo: { min: 250, max: 9999 },
+  };
+
+  function getOptionByRank(question: any, rank: 'min' | 'second' | 'middle' | 'max') {
+    if (question.type === 'slider') {
+      if (rank === 'min') return question.min;
+      if (rank === 'second') return Math.round(question.min + (question.max - question.min) * 0.25);
+      if (rank === 'middle') return Math.round(question.min + (question.max - question.min) * 0.5);
+      if (rank === 'max') return question.max;
+    }
+    let sorted = [...question.options].sort((a, b) => (a.points || 0) - (b.points || 0));
+    if (rank === 'min') return [sorted[0].id];
+    if (rank === 'second') return [sorted[1]?.id || sorted[0].id];
+    if (rank === 'middle') return [sorted[Math.floor(sorted.length / 2)].id];
+    if (rank === 'max') return [sorted[sorted.length - 1].id];
+    return [sorted[0].id];
+  }
+
+  async function autoFillQuiz(diagnosis: string) {
+    let points = 0;
+    if (diagnosis === 'critico') points = 50;
+    else if (diagnosis === 'severo') points = 120;
+    else if (diagnosis === 'moderado') points = 200;
+    else if (diagnosis === 'otimo') points = 300;
+    // Simula um array de respostas com a pontuação desejada
+    setUserAnswers([
+      { questionId: 'simulado', selectedOptions: ['sim'], points }
+    ]);
+    await sleep(100);
+    submitLeadData({ name: diagnosis + ' Teste', email: diagnosis + '@test.com', phone: '0000-0000' });
+  }
+
+  function sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
   return (
     <div className={`min-h-screen transition-colors duration-300 relative ${
       isDarkMode 
@@ -144,12 +187,45 @@ function App() {
       <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-4">
         
         {currentStep === 'intro' && (
-          <QuizIntro
-            title={quizConfig.title}
-            subtitle={quizConfig.subtitle}
-            totalQuestions={quizConfig.totalQuestions}
-            onStart={handleStartQuiz}
-          />
+          <>
+            <QuizIntro
+              title={quizConfig.title}
+              subtitle={quizConfig.subtitle}
+              totalQuestions={quizConfig.totalQuestions}
+              onStart={handleStartQuiz}
+            />
+            {/* Botões de teste para cada diagnóstico */}
+            <div className="flex flex-wrap gap-2 mt-4" style={{ zIndex: 9999, position: 'relative' }}>
+              <button
+                className="px-3 py-2 rounded bg-red-500 text-white font-bold hover:bg-red-600"
+                onClick={() => autoFillQuiz('critico')}
+                type="button"
+              >
+                Testar Crítico
+              </button>
+              <button
+                className="px-3 py-2 rounded bg-orange-500 text-white font-bold hover:bg-orange-600"
+                onClick={() => autoFillQuiz('severo')}
+                type="button"
+              >
+                Testar Severo
+              </button>
+              <button
+                className="px-3 py-2 rounded bg-yellow-500 text-gray-900 font-bold hover:bg-yellow-400"
+                onClick={() => autoFillQuiz('moderado')}
+                type="button"
+              >
+                Testar Moderado
+              </button>
+              <button
+                className="px-3 py-2 rounded bg-green-600 text-white font-bold hover:bg-green-700"
+                onClick={() => autoFillQuiz('otimo')}
+                type="button"
+              >
+                Testar Ótimo
+              </button>
+            </div>
+          </>
         )}
 
         {(currentStep === 'quiz' || currentStep === 'offer') && (
@@ -208,6 +284,7 @@ function App() {
               onRestart={restart}
               eventToAttend={leadData.eventToAttend}
               isDarkMode={isDarkMode}
+              userAnswers={userAnswers}
             />
             
             <Suspense fallback={<div>Carregando social...</div>}>

@@ -11,6 +11,7 @@ interface QuizResultProps {
   onRestart: () => void;
   eventToAttend?: string; // Novo campo opcional
   isDarkMode?: boolean; // Novo campo para o modo escuro
+  userAnswers?: any[]; // Adicionado para acessar altura e peso
 }
 
 export const QuizResult: React.FC<QuizResultProps> = ({
@@ -20,12 +21,57 @@ export const QuizResult: React.FC<QuizResultProps> = ({
   onRestart,
   eventToAttend,
   isDarkMode = false,
+  userAnswers = [], // Novo parâmetro
 }) => {
   const [showWheel, setShowWheel] = React.useState(false);
   const [discount, setDiscount] = React.useState(0);
+  // Animação de fade-in/slide-in
+  const [visible, setVisible] = React.useState(false);
+  React.useEffect(() => {
+    setTimeout(() => setVisible(true), 100);
+  }, []);
+  // Efeito de contagem animada para a pontuação
+  const [displayedPoints, setDisplayedPoints] = React.useState(0);
+  React.useEffect(() => {
+    let start = 0;
+    const end = totalPoints;
+    if (start === end) return;
+    let increment = end > 100 ? Math.ceil(end / 50) : 1;
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+      setDisplayedPoints(start);
+    }, 15);
+    return () => clearInterval(timer);
+  }, [totalPoints]);
 
   const handleDiscountComplete = (discountValue: number) => {
     setDiscount(discountValue);
+  };
+
+  // Função para buscar altura e peso
+  const getSliderValue = (id: string) => {
+    const answer = userAnswers.find((a) => a.questionId === id);
+    if (!answer) return undefined;
+    const val = answer.selectedOptions[0];
+    return val ? Number(val) : undefined;
+  };
+  const altura = getSliderValue('q0_height');
+  const peso = getSliderValue('q0_weight');
+  let imc: number | undefined = undefined;
+  if (altura && peso) {
+    imc = peso / Math.pow(altura / 100, 2);
+  }
+  const getImcClass = (imc: number) => {
+    if (imc < 18.5) return 'Abaixo do peso';
+    if (imc < 25) return 'Peso normal';
+    if (imc < 30) return 'Sobrepeso';
+    if (imc < 35) return 'Obesidade grau I';
+    if (imc < 40) return 'Obesidade grau II';
+    return 'Obesidade grau III';
   };
 
   // Função para definir o texto do evento
@@ -54,7 +100,20 @@ export const QuizResult: React.FC<QuizResultProps> = ({
   }
 
   return (
-    <div className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
+    <div className={`w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 relative overflow-hidden transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      style={{ boxShadow: '0 8px 32px 0 rgba(80, 80, 200, 0.18)' }}
+    >
+      {/* IMC do usuário */}
+      {imc && (
+        <div className="mb-6 bg-gradient-to-r from-green-100 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500">
+          <h3 className="text-lg font-bold text-blue-800 mb-2 text-center">Seu IMC</h3>
+          <div className="flex flex-col items-center justify-center">
+            <span className="text-3xl font-extrabold text-blue-700">{imc.toFixed(1)}</span>
+            <span className="text-base font-medium text-blue-600 mb-1">{getImcClass(imc)}</span>
+            <span className="text-xs text-gray-600 text-center">O IMC (Índice de Massa Corporal) é um indicador internacional usado para classificar o peso em relação à altura. Ele ajuda a identificar riscos à saúde e personalizar ainda mais seu protocolo.</span>
+          </div>
+        </div>
+      )}
       <div className="text-center mb-4 sm:mb-6">
         <div className="mx-auto w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-3">
           <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
@@ -67,29 +126,23 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         </p>
       </div>
 
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 sm:p-5 mb-4 sm:mb-6">
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 sm:p-5 mb-4 sm:mb-6 shadow-lg">
         <div className="flex items-center justify-center mb-3">
-          <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 mr-2" />
+          <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 mr-2 animate-bounce" />
           <span className="text-sm sm:text-base lg:text-lg font-semibold text-gray-700">
-            Você fez {totalPoints} pontos
+            Você fez <span className="text-2xl font-extrabold text-purple-700 animate-pulse">{displayedPoints}</span> pontos
           </span>
         </div>
-        
-        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-3 text-center">
-          {result.title}
-        </h3>
-        
-        <p className="text-gray-700 text-sm sm:text-base lg:text-lg mb-4 text-center">
-          {result.description}
-        </p>
-
-        <div className="bg-white rounded-lg p-3 sm:p-4 border-l-4 border-blue-500">
-          <h4 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">
-            Nossa Recomendação:
-          </h4>
-          <p className="text-gray-700 text-xs sm:text-sm lg:text-base">
-            {result.recommendation}
-          </p>
+        <h3
+          className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-3 text-center"
+          dangerouslySetInnerHTML={{ __html: result.title }}
+        />
+        <div
+          className="text-gray-700 text-sm sm:text-base lg:text-lg mb-4 text-center"
+          dangerouslySetInnerHTML={{ __html: result.description }}
+        />
+        <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg mt-4">
+          <div dangerouslySetInnerHTML={{ __html: result.recommendation }} />
         </div>
       </div>
 
@@ -338,12 +391,14 @@ export const QuizResult: React.FC<QuizResultProps> = ({
           </p>
         </div>
 
-        <button
-          onClick={onRestart}
-          className="w-full bg-gray-100 text-gray-700 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 hover:bg-gray-200"
-        >
-          Refazer Quiz
-        </button>
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={onRestart}
+            className="px-4 py-2 rounded-md font-semibold text-sm bg-gray-100 text-gray-700 shadow hover:bg-gray-200 transition-all duration-200"
+          >
+            Recomeçar Quiz
+          </button>
+        </div>
         
         <div className="bg-gradient-to-r from-purple-50 to-pink-50 border-2 border-purple-300 rounded-xl p-4 mt-4">
           <div className="text-center">

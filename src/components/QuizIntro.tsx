@@ -86,7 +86,7 @@ export const QuizIntro: React.FC<QuizIntroProps> = ({
           </div>
         </div>
         <p className="text-center text-yellow-700 text-xs mt-3 font-medium">
-          💡 Baseado em 15.000+ diagnósticos, 94% das pessoas fazem entre 100-150 pontos
+          💡 Baseado em 15.000+ diagnósticos, 94% das pessoas fazem entre 140-260 pontos
         </p>
       </div>
 
