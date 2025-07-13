@@ -41,7 +41,7 @@ Um quiz interativo e moderno desenvolvido com React, TypeScript e Tailwind CSS.
 
 ### URL do Deploy
 Após o deploy, seu quiz estará disponível em:
-`https://[seu-usuario].github.io/quiz-bolt/`
+`https://[seu-usuario].github.io/quizmetabolico/`
 
 ## 🛠️ Desenvolvimento
 

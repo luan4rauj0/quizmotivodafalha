@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { AdvancedProgressBar } from './components/AdvancedProgressBar';
 import { DarkModeToggle } from './components/DarkModeToggle';
 import { ScoreDisplay } from './components/ScoreDisplay';
@@ -31,6 +31,34 @@ function App() {
   const [hasShared, setHasShared] = React.useState(false);
   const [showAnalytics, setShowAnalytics] = React.useState(false);
   const [showEconomyCalc, setShowEconomyCalc] = React.useState(false);
+
+  // Proteção contra clique direito e seleção de texto
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const handleSelectStart = (e: Event) => {
+      e.preventDefault();
+      return false;
+    };
+
+    const handleDragStart = (e: DragEvent) => {
+      e.preventDefault();
+      return false;
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('selectstart', handleSelectStart);
+    document.addEventListener('dragstart', handleDragStart);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('selectstart', handleSelectStart);
+      document.removeEventListener('dragstart', handleDragStart);
+    };
+  }, []);
 
   const {
     currentStep,
