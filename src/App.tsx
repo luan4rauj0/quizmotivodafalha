@@ -32,7 +32,8 @@ function App() {
   const [showAnalytics, setShowAnalytics] = React.useState(false);
   const [showEconomyCalc, setShowEconomyCalc] = React.useState(false);
 
-  // Proteção contra clique direito e seleção de texto
+  // Proteção contra clique direito e seleção de texto - TEMPORARIAMENTE DESABILITADA PARA TESTE
+  /*
   useEffect(() => {
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
@@ -69,6 +70,7 @@ function App() {
       document.removeEventListener('dragstart', handleDragStart);
     };
   }, []);
+  */
 
   const {
     currentStep,
