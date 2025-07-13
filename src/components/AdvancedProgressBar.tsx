@@ -9,12 +9,12 @@ interface AdvancedProgressBarProps {
 }
 
 const stages = [
-  { name: 'Ciclo Invisível', questions: 3 },
-  { name: 'Mentiras do Mercado', questions: 3 },
-  { name: 'Sinais Ignorados', questions: 4 },
-  { name: 'Inimigo Interno', questions: 5 },
-  { name: 'Inflamação Silenciosa', questions: 5 },
-  { name: 'Protocolo Natural', questions: 10 },
+  { name: 'Análise Metabólica', questions: 3 },
+  { name: 'Diagnóstico Hormonal', questions: 3 },
+  { name: 'Sintomas Clínicos', questions: 4 },
+  { name: 'Avaliação GLP-1', questions: 5 },
+  { name: 'Exame de Inflamação', questions: 5 },
+  { name: 'Protocolo Personalizado', questions: 10 },
 ];
 
 export const AdvancedProgressBar: React.FC<AdvancedProgressBarProps> = ({ 

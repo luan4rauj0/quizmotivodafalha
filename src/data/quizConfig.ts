@@ -46,7 +46,7 @@ export const quizQuestions: QuizQuestion[] = [
     microFeedback: 'Seu objetivo é possível! O protocolo vai te levar exatamente onde você quer chegar. Vamos descobrir como! 🚀'
   },
 
-  // ETAPA 1/6: Desmascarando o Ciclo Invisível 😈
+  // ETAPA 1/6: Análise Metabólica 🔬
   {
     id: 'q1',
     question: 'Quando você se olha no espelho 🪞 e vê as áreas que NÃO mudam há anos… o que sente primeiro? 😣',
@@ -84,7 +84,7 @@ export const quizQuestions: QuizQuestion[] = [
     microFeedback: 'O tempo está do lado das indústrias. Quanto mais você tenta e falha, mais elas lucram. Não é só sobre força de vontade: é sobre um sistema feito para te manter presa. ⏰'
   },
 
-  // ETAPA 2/6: As Mentiras que o Mercado Te Fez Acreditar 🤥
+  // ETAPA 2/6: Diagnóstico Hormonal 🧬
   {
     id: 'q4',
     question: 'Quando você tentou "comer menos" 🍽️, o que aconteceu de pior?',
@@ -122,7 +122,7 @@ export const quizQuestions: QuizQuestion[] = [
     microFeedback: 'Essa sensação de "ser diferente" é na verdade seu corpo te avisando que algo está biologicamente errado. E ignorar esses sinais pode ter consequências irreversíveis. 😰'
   },
 
-  // ETAPA 3/6: Os Sinais Que Você Aprendeu a Ignorar 🚨
+  // ETAPA 3/6: Sintomas Clínicos 🚨
   {
     id: 'q7',
     question: 'Se sua fome fosse uma criatura viva 👹… qual seria?',
@@ -172,7 +172,7 @@ export const quizQuestions: QuizQuestion[] = [
     microFeedback: 'Essa "guerra interna" é real... é seu corpo lutando contra hormônios desregulados. E a cada dia que passa, o lado sabotador está ganhando. 😔'
   },
 
-  // ETAPA 4/6: Revelando o Inimigo Interno 🧬
+  // ETAPA 4/6: Avaliação GLP-1 💊
   {
     id: 'q11',
     question: 'Se você soubesse que existe um hormônio que te faz sentir saciedade real, queima gordura e estabiliza energia… faria sentido com tudo que já viveu? 🤔',
@@ -248,7 +248,7 @@ export const quizQuestions: QuizQuestion[] = [
     microFeedback: 'Sua meta de peso é totalmente alcançável! O protocolo vai te levar exatamente onde você quer chegar, de forma natural e sustentável. 🚀'
   },
 
-  // ETAPA 5/6: A Inflamação Invisível Que Está Silenciando Seu Corpo 🔥
+  // ETAPA 5/6: Exame de Inflamação 🔥
   {
     id: 'q16',
     question: 'Imagine que existe uma inflamação silenciosa no seu intestino, abafando a produção do hormônio que controla sua fome, energia e queima de gordura. O que essa ideia te desperta? 😳',
@@ -323,7 +323,7 @@ export const quizQuestions: QuizQuestion[] = [
     microFeedback: 'Se você não está 100% pronta agora, depois de tudo que descobriu sobre seu corpo, quando vai estar? O tempo está passando... 😔'
   },
 
-  // ETAPA 6/6: OFERTA DO PROTOCOLO 🌿 (SEM PONTOS)
+  // ETAPA 6/6: Protocolo Personalizado 🌿 (SEM PONTOS)
   {
     id: 'q21',
     question: 'Baseado no seu perfil, você precisa do protocolo dos 3 chás metabólicos. Qual plano se encaixa melhor na sua situação? 💡',
