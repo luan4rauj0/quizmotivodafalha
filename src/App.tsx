@@ -194,37 +194,7 @@ function App() {
               totalQuestions={quizConfig.totalQuestions}
               onStart={handleStartQuiz}
             />
-            {/* Botões de teste para cada diagnóstico */}
-            <div className="flex flex-wrap gap-2 mt-4" style={{ zIndex: 9999, position: 'relative' }}>
-              <button
-                className="px-3 py-2 rounded bg-red-500 text-white font-bold hover:bg-red-600"
-                onClick={() => autoFillQuiz('critico')}
-                type="button"
-              >
-                Testar Crítico
-              </button>
-              <button
-                className="px-3 py-2 rounded bg-orange-500 text-white font-bold hover:bg-orange-600"
-                onClick={() => autoFillQuiz('severo')}
-                type="button"
-              >
-                Testar Severo
-              </button>
-              <button
-                className="px-3 py-2 rounded bg-yellow-500 text-gray-900 font-bold hover:bg-yellow-400"
-                onClick={() => autoFillQuiz('moderado')}
-                type="button"
-              >
-                Testar Moderado
-              </button>
-              <button
-                className="px-3 py-2 rounded bg-green-600 text-white font-bold hover:bg-green-700"
-                onClick={() => autoFillQuiz('otimo')}
-                type="button"
-              >
-                Testar Ótimo
-              </button>
-            </div>
+            {/* Botões de teste para cada diagnóstico REMOVIDOS */}
           </>
         )}
 
