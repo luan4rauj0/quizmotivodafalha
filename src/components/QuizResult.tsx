@@ -540,7 +540,7 @@ export const QuizResult: React.FC<QuizResultProps> = ({
       </div>
 
       <div className="space-y-3">
-        <button
+        <button 
           id="botao-roleta"
           onClick={() => setShowWheel(true)}
           className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 flex items-center justify-center animate-pulse-slow"

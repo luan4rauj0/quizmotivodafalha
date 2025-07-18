@@ -21,7 +21,7 @@ export const DiscountWheel: React.FC<DiscountWheelProps> = ({ onComplete }) => {
     if (isSpinning || hasSpun) return;
 
     setIsSpinning(true);
-
+    
     // Forçar a rotação para cair sempre no segmento de 30%
     const index30 = discounts.findIndex((d) => d === 30);
     const segmentAngle = 360 / discounts.length;
