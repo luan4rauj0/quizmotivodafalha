@@ -3,7 +3,7 @@ import { QuizQuestion, QuizResult } from '../types/quiz';
 export const quizConfig = {
   title: "Descubra o Motivo do Seu Emagrecimento Ter Falhado Até Hoje",
   subtitle: "Quiz completo para desbloquear seu protocolo personalizado mounjaro natural",
-  totalQuestions: 29, // Atualizado para 29 perguntas
+  totalQuestions: 25, // Corrigido para 25 perguntas reais
   offerQuestions: 5, // Separate offer questions
 };
 

@@ -188,6 +188,13 @@ function App() {
         
         {currentStep === 'intro' && (
           <>
+            {/* Botão de teste para pular para o resultado */}
+            <button
+              onClick={() => submitLeadData({ name: 'Teste', email: 'teste@teste.com', phone: '0000-0000' })}
+              className="mb-4 w-full bg-gradient-to-r from-gray-400 to-gray-600 text-white py-2 rounded-xl font-semibold text-sm shadow hover:from-gray-500 hover:to-gray-700 transition-all duration-200 z-20 pointer-events-auto relative"
+            >
+              Pular para o Resultado (TESTE)
+            </button>
             <QuizIntro
               title={quizConfig.title}
               subtitle={quizConfig.subtitle}

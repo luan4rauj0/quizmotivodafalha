@@ -14,6 +14,76 @@ interface QuizResultProps {
   userAnswers?: any[]; // Adicionado para acessar altura e peso
 }
 
+// Carrossel simples de imagens para demonstração
+import { useEffect, useRef, useState } from 'react';
+
+const carouselImages = [
+  'https://randomuser.me/api/portraits/women/1.jpg',
+  'https://randomuser.me/api/portraits/women/2.jpg',
+  'https://randomuser.me/api/portraits/women/3.jpg',
+  'https://randomuser.me/api/portraits/women/4.jpg',
+  'https://randomuser.me/api/portraits/women/5.jpg',
+  'https://randomuser.me/api/portraits/women/6.jpg',
+  'https://randomuser.me/api/portraits/women/7.jpg',
+  'https://randomuser.me/api/portraits/women/8.jpg',
+  'https://randomuser.me/api/portraits/women/9.jpg',
+  'https://randomuser.me/api/portraits/women/10.jpg',
+  'https://randomuser.me/api/portraits/women/11.jpg',
+  'https://randomuser.me/api/portraits/women/12.jpg',
+  'https://randomuser.me/api/portraits/women/13.jpg',
+  'https://randomuser.me/api/portraits/women/14.jpg',
+  'https://randomuser.me/api/portraits/women/15.jpg',
+  'https://randomuser.me/api/portraits/women/16.jpg',
+];
+
+function CarouselDemo(): JSX.Element {
+  const [index, setIndex] = useState(0);
+  const timeoutRef = useRef<number | null>(null);
+
+  // Cada slide é uma imagem
+  const slides = carouselImages.map((img) => [img]);
+
+  useEffect(() => {
+    timeoutRef.current = window.setTimeout(() => {
+      setIndex((prev) => (prev + 1) % slides.length);
+    }, 3500); // Transição mais lenta
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [index, slides.length]);
+
+  // Sempre mostrar dois blocos: Antes e Depois
+  const beforeIdx = index;
+  const afterIdx = (index + 1) % carouselImages.length;
+
+  return (
+    <div className="relative w-full h-72 sm:h-96 overflow-hidden flex items-center justify-center bg-gradient-to-br from-purple-100 to-blue-100">
+      <div className="flex w-full h-full items-end justify-center gap-6 px-2">
+        {/* Antes */}
+        <div className="flex flex-col items-center w-1/2">
+          <span className="mb-2 text-sm font-bold text-gray-600 animate-fadeInUp">Antes</span>
+          <img
+            src={carouselImages[beforeIdx]}
+            alt={`Antes ${beforeIdx + 1}`}
+            className="w-44 sm:w-64 h-72 sm:h-96 object-cover rounded-3xl shadow-2xl border-4 border-white transition-all duration-700"
+            style={{ objectPosition: 'center top' }}
+          />
+        </div>
+        {/* Depois */}
+        <div className="flex flex-col items-center w-1/2">
+          <span className="mb-2 text-sm font-bold text-green-700 animate-fadeInUp">Depois</span>
+          <img
+            src={carouselImages[afterIdx]}
+            alt={`Depois ${afterIdx + 1}`}
+            className="w-44 sm:w-64 h-72 sm:h-96 object-cover rounded-3xl shadow-2xl border-4 border-white transition-all duration-700"
+            style={{ objectPosition: 'center top' }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export const QuizResult: React.FC<QuizResultProps> = ({
   result,
   totalPoints,
@@ -95,25 +165,43 @@ export const QuizResult: React.FC<QuizResultProps> = ({
     return `bem a tempo ${preposition} ${eventToAttend.toLowerCase()}`;
   };
 
+  // BÔNUS DO PROTOCOLO
+  const bonusList = [
+    {
+      icon: '🇰🇷',
+      title: 'Jejum Metabólico Coreano',
+      desc: 'Emagreça sem sofrimento com o método coreano.'
+    },
+    {
+      icon: '🍬',
+      title: 'Vício em Doces Nunca Mais',
+      desc: 'Acabe com a compulsão por doces de forma natural.'
+    },
+    {
+      icon: '👵',
+      title: 'Receita da Vovó',
+      desc: 'Limpe seu intestino e melhore sua digestão.'
+    },
+    {
+      icon: '🧠',
+      title: 'Acelere seu metabolismo sem mudar o que você come.',
+      desc: 'Programe sua mente para acelerar o metabolismo.'
+    },
+  ];
+
   if (showWheel) {
-    return <DiscountWheel onComplete={handleDiscountComplete} />;
+    return (
+      <>
+        <DiscountWheel onComplete={handleDiscountComplete} />
+        {/* Botões de checkout e WhatsApp removidos conforme solicitado */}
+      </>
+    );
   }
 
   return (
     <div className={`w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-4 sm:p-6 lg:p-8 relative overflow-hidden transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       style={{ boxShadow: '0 8px 32px 0 rgba(80, 80, 200, 0.18)' }}
     >
-      {/* IMC do usuário */}
-      {imc && (
-        <div className="mb-6 bg-gradient-to-r from-green-100 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500">
-          <h3 className="text-lg font-bold text-blue-800 mb-2 text-center">Seu IMC</h3>
-          <div className="flex flex-col items-center justify-center">
-            <span className="text-3xl font-extrabold text-blue-700">{imc.toFixed(1)}</span>
-            <span className="text-base font-medium text-blue-600 mb-1">{getImcClass(imc)}</span>
-            <span className="text-xs text-gray-600 text-center">O IMC (Índice de Massa Corporal) é um indicador internacional usado para classificar o peso em relação à altura. Ele ajuda a identificar riscos à saúde e personalizar ainda mais seu protocolo.</span>
-          </div>
-        </div>
-      )}
       <div className="text-center mb-4 sm:mb-6">
         <div className="mx-auto w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mb-3">
           <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
@@ -125,7 +213,6 @@ export const QuizResult: React.FC<QuizResultProps> = ({
           Uma grande mudança começa com um pequeno passo, o seu foi terminar esse quiz, aqui está o seu resultado personalizado
         </p>
       </div>
-
       <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-4 sm:p-5 mb-4 sm:mb-6 shadow-lg">
         <div className="flex items-center justify-center mb-3">
           <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500 mr-2 animate-bounce" />
@@ -144,8 +231,68 @@ export const QuizResult: React.FC<QuizResultProps> = ({
         <div className="bg-purple-50 border-l-4 border-purple-400 p-4 rounded-lg mt-4">
           <div dangerouslySetInnerHTML={{ __html: result.recommendation }} />
         </div>
+        {/* Botão para adquirir protocolo, faz scroll até a roleta */}
+        <button
+          onClick={() => {
+            const el = document.getElementById('botao-roleta');
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }}
+          className="w-full my-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-bold text-base sm:text-lg shadow hover:from-green-600 hover:to-emerald-700 transition-all duration-200 animate-pulse-slow"
+        >
+          Quero meu protocolo agora
+        </button>
       </div>
-
+      {/* NOVA SESSÃO ANIMADA DOS 4 BÔNUS - movida para cima da previsão de resultados */}
+      <div className="mb-8">
+        <h3 className="text-xl sm:text-2xl font-bold text-center text-purple-700 mb-4 animate-fadeIn">Você vai receber também:</h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-fadeInUp">
+          {bonusList.map((bonus, idx) => (
+            <div key={bonus.title} className="flex items-center bg-gradient-to-r from-pink-100 via-blue-100 to-purple-100 border-l-8 border-pink-400 rounded-2xl p-5 shadow-lg transition-transform duration-300 hover:scale-105 relative overflow-hidden">
+              <span className="text-4xl mr-4 drop-shadow-lg">{bonus.icon}</span>
+              <div className="flex-1">
+                <div className="font-extrabold text-pink-700 text-lg mb-1 drop-shadow">{bonus.title}</div>
+                <div className="text-gray-700 text-base mb-2 font-medium">{bonus.desc}</div>
+                {/* Selo de preço em dois blocos lado a lado - versão menor */}
+                <div className="inline-flex items-center justify-center gap-1 mt-2">
+                  <div className="flex items-center bg-red-600 text-white font-bold text-xs sm:text-sm px-2 py-1 rounded-l-full shadow-md border-2 border-white animate-pulse">
+                    <span className="line-through">de&nbsp;R$97</span>
+                  </div>
+                  <div className="flex items-center bg-green-500 text-white font-extrabold text-sm sm:text-base px-3 py-1 rounded-r-full shadow-md border-2 border-white animate-pulse">
+                    por&nbsp;<span className="text-base sm:text-lg font-extrabold ml-1">R$0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Economia total e botão para pular para economia */}
+        <div className="mt-6 flex flex-col items-center">
+          <div className="text-center text-base sm:text-lg font-bold text-green-700 mb-2 animate-fadeInUp">
+            Apenas com esses bônus você economiza +-<span className="text-green-900">R$400</span>.<br />
+            Se comparado aos caminhos convencionais, economiza ainda mais. Veja:
+          </div>
+          <button
+            onClick={() => {
+              const el = document.getElementById('economia-calculadora');
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }}
+            className="mt-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold py-2 px-6 rounded-full shadow-lg text-base sm:text-lg transition-all duration-200 hover:from-yellow-500 hover:to-orange-600 animate-fadeInUp"
+          >
+            Ver economia com caminhos convencionais
+          </button>
+        </div>
+      </div>
+      {/* IMC do usuário */}
+      {imc && (
+        <div className="mb-6 bg-gradient-to-r from-green-100 to-blue-100 rounded-xl p-4 border-l-4 border-blue-500">
+          <h3 className="text-lg font-bold text-blue-800 mb-2 text-center">Seu IMC</h3>
+          <div className="flex flex-col items-center justify-center">
+            <span className="text-3xl font-extrabold text-blue-700">{imc.toFixed(1)}</span>
+            <span className="text-base font-medium text-blue-600 mb-1">{getImcClass(imc)}</span>
+            <span className="text-xs text-gray-600 text-center">O IMC (Índice de Massa Corporal) é um indicador internacional usado para classificar o peso em relação à altura. Ele ajuda a identificar riscos à saúde e personalizar ainda mais seu protocolo.</span>
+          </div>
+        </div>
+      )}
       {/* Seção de Previsão de Resultados */}
       <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl p-6 mb-6 border-2 border-purple-200">
         <div className="text-center mb-4">
@@ -318,6 +465,16 @@ export const QuizResult: React.FC<QuizResultProps> = ({
                 </div>
               </div>
             </div>
+            {/* Botão igual ao 'Quero meu protocolo agora' */}
+            <button
+              onClick={() => {
+                const el = document.getElementById('botao-roleta');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }}
+              className="w-full my-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 rounded-xl font-bold text-base sm:text-lg shadow hover:from-green-600 hover:to-emerald-700 transition-all duration-200 animate-pulse-slow"
+            >
+              Quero meu protocolo agora
+            </button>
           </div>
         </div>
 
@@ -365,18 +522,28 @@ export const QuizResult: React.FC<QuizResultProps> = ({
           <p className="text-center text-xs text-gray-500 mt-3">
             *Resultados baseados em dados reais de usuárias com perfil similar ao seu
           </p>
+          {/* Carrossel de imagens de participantes */}
+          <div className="mt-8">
+            <h4 className="font-bold text-gray-800 mb-4 text-center text-lg sm:text-xl animate-fadeInUp">
+              Pessoas com respostas parecidas que participaram do protocolo
+            </h4>
+            <div className="relative w-full max-w-xl mx-auto overflow-hidden rounded-2xl shadow-lg bg-white">
+              <CarouselDemo />
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Calculadora de Economia */}
-      <div className="mb-6 relative z-20" style={{ pointerEvents: 'auto' }}>
+      <div id="economia-calculadora" className="mb-6 relative z-20" style={{ pointerEvents: 'auto' }}>
         <EconomyCalculator isDarkMode={isDarkMode} />
       </div>
 
       <div className="space-y-3">
-        <button 
+        <button
+          id="botao-roleta"
           onClick={() => setShowWheel(true)}
-          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 flex items-center justify-center animate-pulse"
+          className="w-full bg-gradient-to-r from-green-500 to-emerald-600 text-white py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base lg:text-lg transition-all duration-200 hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 flex items-center justify-center animate-pulse-slow"
         >
           <span>🎰 GIRAR ROLETA E GARANTIR DESCONTO</span>
         </button>
@@ -416,6 +583,24 @@ export const QuizResult: React.FC<QuizResultProps> = ({
           </div>
         </div>
       </div>
+      <style>{`
+        @keyframes fadeInUp {
+          0% { opacity: 0; transform: translateY(24px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeInUp {
+          animation: fadeInUp 0.9s cubic-bezier(.39,.575,.565,1) both;
+        }
+      `}</style>
+      <style>{`
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+          50% { opacity: 0.92; box-shadow: 0 0 0 8px rgba(16, 185, 129, 0.12); }
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+      `}</style>
     </div>
   );
 };

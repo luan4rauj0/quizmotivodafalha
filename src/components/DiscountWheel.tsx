@@ -21,23 +21,20 @@ export const DiscountWheel: React.FC<DiscountWheelProps> = ({ onComplete }) => {
     if (isSpinning || hasSpun) return;
 
     setIsSpinning(true);
-    
-    // Random rotation between 1440 and 2160 degrees (4-6 full rotations)
-    const randomRotation = 1440 + Math.random() * 720;
-    setRotation(randomRotation);
+
+    // Forçar a rotação para cair sempre no segmento de 30%
+    const index30 = discounts.findIndex((d) => d === 30);
+    const segmentAngle = 360 / discounts.length;
+    // Gira múltiplas voltas e para exatamente no segmento de 30%
+    const randomFullRotations = 4 + Math.floor(Math.random() * 3); // 4 a 6 voltas
+    const rotation = randomFullRotations * 360 + index30 * segmentAngle + segmentAngle / 2;
+    setRotation(rotation);
 
     setTimeout(() => {
       setIsSpinning(false);
       setHasSpun(true);
-      
-      // Calculate which segment we landed on
-      const normalizedRotation = (360 - (randomRotation % 360)) % 360;
-      const segmentAngle = 360 / discounts.length;
-      const segmentIndex = Math.floor(normalizedRotation / segmentAngle);
-      const finalDiscount = discounts[segmentIndex];
-      
-      setDiscount(finalDiscount);
-      onComplete(finalDiscount);
+      setDiscount(30);
+      onComplete(30);
     }, 3000);
   };
 
@@ -129,12 +126,11 @@ export const DiscountWheel: React.FC<DiscountWheelProps> = ({ onComplete }) => {
             <div className="flex items-start">
               <Camera className="w-5 h-5 text-yellow-600 mr-3 mt-1 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-yellow-800 mb-2">📸 IMPORTANTE - Instruções:</h4>
+                <h4 className="font-bold text-yellow-800 mb-2">📢 IMPORTANTE - Instruções:</h4>
                 <ol className="text-yellow-700 text-sm space-y-1 list-decimal list-inside">
-                  <li>Tire um print/screenshot desta tela com seu desconto</li>
-                  <li>Clique no botão do WhatsApp abaixo</li>
-                  <li>Envie o print no chat para garantir seu desconto</li>
-                  <li>Nossa equipe te enviará o link de pagamento com desconto aplicado</li>
+                  <li>Clique no botão abaixo para comprar com desconto.</li>
+                  <li>O link já vai com o cupom aplicado automaticamente.</li>
+                  <li>Se não aparecer, adicione o cupom <b>Emag30</b> manualmente no checkout.</li>
                 </ol>
               </div>
             </div>
@@ -145,7 +141,14 @@ export const DiscountWheel: React.FC<DiscountWheelProps> = ({ onComplete }) => {
             className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-xl font-semibold text-lg transition-all duration-200 hover:from-green-600 hover:to-green-700 transform hover:scale-105 flex items-center justify-center animate-pulse"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
-            💬 FALAR NO WHATSAPP E GARANTIR DESCONTO
+            🛒 Comprar com desconto
+          </button>
+          <button
+            onClick={handleWhatsAppRedirect}
+            className="w-full mt-2 bg-gradient-to-r from-blue-400 to-blue-600 text-white py-3 rounded-xl font-semibold text-base transition-all duration-200 hover:from-blue-500 hover:to-blue-700 flex items-center justify-center animate-fadeInUp"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Tirar uma dúvida no WhatsApp
           </button>
 
           <div className="bg-red-50 border border-red-200 rounded-xl p-3">
